@@ -1,14 +1,16 @@
 import React from "react";
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import UserCards from "./components/userCards";
 
+const Header = () => <h1>User cards</h1>
 function App() {
   return (
     <>
       <Header />
       <Router>
-        <Switch>
-          <Route exact path="/" component={userCards} />
-        </Switch>
+        <Routes>
+          <Route path="/" element={<UserCards />} exact />
+        </Routes>
       </Router>
     </>
   );
