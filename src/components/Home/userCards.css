@@ -6,6 +6,12 @@
 .UserCard {
   padding: 20px;
   border: 1px solid;
+  width: 25%;
+  text-align: center;
+}
+
+.Button {
+  align-content: flex-end;
 }
 
 /*# sourceMappingURL=userCards.css.map */
