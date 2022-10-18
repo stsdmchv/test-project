@@ -12,10 +12,6 @@ const UserCards = () => (
           <Card.Body>
             <Card.Title key={index}>{user.firstName} {user.lastName}</Card.Title>
           </Card.Body>
-          <Card.Footer>
-            <Button variant="primary">Delete</Button>
-            <Button>Edit</Button>
-          </Card.Footer>
         </Card>
     </CardGroup>
   )
