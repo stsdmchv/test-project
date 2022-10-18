@@ -1,6 +1,6 @@
 import React from "react";
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-import UserCards from "./components/userCards";
+import UserCards from "./components/Home/userCards";
 
 const Header = () => <h1>User cards</h1>
 function App() {

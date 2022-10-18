@@ -7,10 +7,10 @@ users.push({id: '3', firstName: 'Урус-Мартан', lastName: 'Кур-ко�
 const UserCards = () => (
   users.map((user, index) =>
     <CardGroup >
-        <Card >
+        <Card className="UserCard">
           <Card.Header>{user.id}</Card.Header>
           <Card.Body>
-            <Card.Title>{user.firstName} {user.lastName}</Card.Title>
+            <Card.Title key={index}>{user.firstName} {user.lastName}</Card.Title>
           </Card.Body>
           <Card.Footer>
             <Button variant="primary">Delete</Button>
