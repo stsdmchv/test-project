@@ -3,6 +3,7 @@ import * as React from 'react';
 import * as yup from 'yup';
 import {Formik, Field, Form, FormikHelpers, ErrorMessage} from 'formik';
 import PasswordShowHide from './PasswordShowHide'
+import {useState} from "react";
 
 enum Roles {
     ANT,
@@ -22,7 +23,18 @@ interface Values {
 
 const required = (value: any) => (value ? undefined : "Required");
 
+
 const UserCard = () => {
+    const [term, setTerm] = useState('');
+    //(values: Values, { setSubmitting }: FormikHelpers<Values>)
+    const submitForm = (event: React.FormEvent<HTMLFormElement>) => {
+        // Preventing the page from reloading
+        event.preventDefault();
+        setTimeout(() => {
+            alert(JSON.stringify(values, null, 2));
+            setSubmitting(false);
+        }, 500);
+    }
     return (
         <div>
             <h1>Add new user</h1>
@@ -42,12 +54,7 @@ const UserCard = () => {
                         .matches(/[a-zA-Z]/, 'Password can only contain Latin letters.'),
                     roles: yup.mixed<Roles>().oneOf(Object.values(Roles) as number[]).required()
                 }}
-                onSubmit={(values: Values, { setSubmitting }: FormikHelpers<Values>) => {
-                    setTimeout(() => {
-                        alert(JSON.stringify(values, null, 2));
-                        setSubmitting(false);
-                    }, 500);
-                }}
+                onSubmit={submitForm}
             >
                 <Form>
                     <label htmlFor="firstName">First Name</label>
