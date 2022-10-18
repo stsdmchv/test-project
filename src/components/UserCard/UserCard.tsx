@@ -1,6 +1,5 @@
 import 'react-app-polyfill/ie11';
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import * as yup from 'yup';
 import {Formik, Field, Form, FormikHelpers, ErrorMessage} from 'formik';
 import PasswordShowHide from './PasswordShowHide'
@@ -21,9 +20,9 @@ interface Values {
     /*workBorders: [];*/
 }
 
-const required = value => (value ? undefined : "Required");
+const required = (value: any) => (value ? undefined : "Required");
 
-const App = () => {
+const UserCard = () => {
     return (
         <div>
             <h1>Add new user</h1>
@@ -43,10 +42,7 @@ const App = () => {
                         .matches(/[a-zA-Z]/, 'Password can only contain Latin letters.'),
                     roles: yup.mixed<Roles>().oneOf(Object.values(Roles) as number[]).required()
                 }}
-                onSubmit={(
-                    values: Values,
-                    { setSubmitting }: FormikHelpers<Values>
-                ) => {
+                onSubmit={(values: Values, { setSubmitting }: FormikHelpers<Values>) => {
                     setTimeout(() => {
                         alert(JSON.stringify(values, null, 2));
                         setSubmitting(false);
@@ -87,4 +83,4 @@ const App = () => {
     );
 };
 
-ReactDOM.render(<App />, document.getElementById('root'));
+export default UserCard;
