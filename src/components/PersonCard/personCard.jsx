@@ -1,5 +1,7 @@
-import {useParams} from "react-router-dom";
 import React from "react";
+import {Button, Form} from "react-bootstrap";
+import {useParams} from "react-router-dom";
+import './personCard.scss';
 
 // @desc    Show card
 // @route   GET /
@@ -10,19 +12,28 @@ export const PersonCard = (props) => {
     .find(item => item.id === Number(id))
 
   return (
-    <div>
-      <h2>Person card - {cardToShow.username}</h2>
-      <label>Username</label>
-      <input value={cardToShow.username}/>
+    <Form>
+      <Form.Label><h2>{cardToShow.username}</h2></Form.Label>
 
-      <label>First name</label>
-      <input value={cardToShow.firstName}/>
-
-      <label>Last name</label>
-      <input value={cardToShow.lastName}/>
-
-      <label>Password</label>
-      <input value={cardToShow.password}/>
-    </div>
+      <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Label>First name</Form.Label>
+        <Form.Control type="firstName" placeholder="Your name" />
+      </Form.Group>
+      <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Label>Last name</Form.Label>
+        <Form.Control type="lastName" placeholder="Your surname" />
+      </Form.Group>
+      <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Label>Username</Form.Label>
+        <Form.Control type="username" placeholder="Username" />
+      </Form.Group>
+      <Form.Group className="mb-3" controlId="formBasicPassword">
+        <Form.Label>Password</Form.Label>
+        <Form.Control type="password" placeholder="Password" />
+      </Form.Group>
+      <Button variant="primary" type="submit">
+        Save
+      </Button>
+    </Form>
   )
 }
