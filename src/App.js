@@ -1,6 +1,7 @@
 import React from "react";
 import {BrowserRouter as Router, Route, Routes, useParams} from 'react-router-dom';
 import {PersonCard} from "./components/PersonCard/personCard";
+import {AllCards} from "./components/Home/allCards";
 
 const persons = [
   {id: 1, firstName: "A", lastName: "AA", username: "AAA", password: "AAAA"},
@@ -10,26 +11,19 @@ const persons = [
   {id: 5, firstName: "G", lastName: "GG", username: "GGG", password: "GGGG"},
 ]
 
-const AllCards = () => {
-  return (persons.map((item) => {
-      <div>
-        <h3>{item.username}</h3>
-        <label>{item.firstName} {item.lastName}</label>
-        <label>{item.id}</label>
-      </div>
-    }
-  ))
-
-}
+const Header = () => <h1>User cards</h1>
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<AllCards />} />
-        <Route path=":id" element={<PersonCard persons={persons} />} />
-      </Routes>
-    </Router>
+    <>
+      <Header/>
+      <Router>
+        <Routes>
+          <Route path="/" element={<AllCards persons={persons} />} exact />
+          <Route path=":id" element={<PersonCard persons={persons} />} />
+        </Routes>
+      </Router>
+    </>
   );
 }
 
