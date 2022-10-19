@@ -1,7 +1,8 @@
 import React from "react";
-import {BrowserRouter as Router, Route, Routes, useParams} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import {PersonCard} from "./components/PersonCard/personCard";
 import {AllCards} from "./components/Home/allCards";
+import {AddPerson} from "./components/PersonCard/addPerson";
 
 const persons = [
   {id: 1, firstName: "A", lastName: "AA", username: "AAA", password: "AAAA"},
@@ -20,6 +21,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<AllCards persons={persons} />} exact />
+          <Route path="/addNewUser" element={<AddPerson />} exact />
           <Route path=":id" element={<PersonCard persons={persons} />} />
         </Routes>
       </Router>
