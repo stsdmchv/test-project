@@ -20,7 +20,7 @@ function App() {
       <Header/>
       <Router>
         <Routes>
-          <Route path="/" element={<AllCards persons={persons} />} exact />
+          <Route path="/" element={<AllCards />} exact />
           <Route path="/addNewUser" element={<AddPerson persons={persons}/>} exact />
           <Route path=":id" element={<PersonCard persons={persons} />} />
         </Routes>

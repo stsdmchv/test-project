@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import {Button, Form} from "react-bootstrap";
 import './personCard.scss';
+import {getValuesLS, putValuesLS} from "../../controllers/localStorageController";
 
 // @desc    Add person
 // @route   GET /addNew
@@ -13,6 +14,8 @@ export const AddPerson = (props) => {
     lastName: "",
   })
   const id = Math.max(...(props.persons.map(item => item.id))) + 1
+  const idLS = JSON.parse(getValuesLS())
+  console.log(idLS)
 
   const changeHandler = e => {
     setValues({...values, [e.target.name]: e.target.value})
@@ -20,7 +23,7 @@ export const AddPerson = (props) => {
 
   // TODO: Need refactor on Redux
   const onClick = () => {
-    localStorage.setItem(id, JSON.stringify(values))
+    putValuesLS(id, values)
   }
 
   return (
@@ -77,8 +80,7 @@ export const AddPerson = (props) => {
         <Form.Control
           required
           type="password"
-          placeholder="Repeat password"
-          onChange={changeHandler}/>
+          placeholder="Repeat password"/>
       </Form.Group>
       <Button
         variant="primary"

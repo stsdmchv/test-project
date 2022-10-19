@@ -1,12 +1,8 @@
 import React from "react";
+import {getValuesLS} from "../../controllers/localStorageController";
 
+export const AllCards = () => {
+  const users = getValuesLS()
 
-export const AllCards = (props) => {
-  const persons = props.persons
-  console.log(persons.id)
-  const cards = persons.map(person => {
-    <div>${person.id}</div>
-    console.log(person.id)
-  })
-  return {cards}
+  console.log(users.toString())
   }
