@@ -1,20 +1,21 @@
 import React, {useState} from "react";
 import {Button, Form} from "react-bootstrap";
 import './personCard.scss';
-import {getValuesLS, putValuesLS} from "../../controllers/localStorageController";
+import {putValuesLS} from "../../controllers/localStorageController";
 
 // @desc    Add person
 // @route   GET /addNew
 // @access  Public
 export const AddPerson = (props) => {
+  const id = Object.keys(localStorage).length + 1
+
   const [values, setValues] = useState({
-    id: "",
+    id: id,
     username: "",
     password: "",
     firstName: "",
     lastName: "",
   })
-  const id = Object.keys(localStorage).length + 1
 
   const changeHandler = e => {
     setValues({...values, [e.target.name]: e.target.value})
@@ -22,8 +23,8 @@ export const AddPerson = (props) => {
 
   // TODO: Need refactor on Redux
   const onClick = () => {
-    putValuesLS(id, values)
     setValues({...values, id: id+1}) // TODO: Need auto-redirect on "/"
+    putValuesLS(id, values)
   }
 
   return (
