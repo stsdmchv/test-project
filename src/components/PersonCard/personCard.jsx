@@ -17,23 +17,28 @@ export const PersonCard = (props) => {
 
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>First name</Form.Label>
-        <Form.Control type="firstName" placeholder="Your name" />
+        <Form.Control type="firstName" placeholder="Your name" value={cardToShow.firstName}/>
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Last name</Form.Label>
-        <Form.Control type="lastName" placeholder="Your surname" />
+        <Form.Control type="lastName" placeholder="Your surname" value={cardToShow.lastName}/>
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Username</Form.Label>
-        <Form.Control type="username" placeholder="Username" />
+        <Form.Control type="username" placeholder="Username" value={cardToShow.username}/>
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Password</Form.Label>
-        <Form.Control type="password" placeholder="Password" />
+        <Form.Control placeholder="Password" value={cardToShow.password}/>
       </Form.Group>
-      <Button variant="primary" type="submit">
-        Save
-      </Button>
+      <Form.Group>
+        <Button variant="primary" type="submit">
+          Save
+        </Button>
+        <Button color="red" variant="outline-secondary" type="submit">
+          Delete
+        </Button>
+      </Form.Group>
     </Form>
   )
 }
