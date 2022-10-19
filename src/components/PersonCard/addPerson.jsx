@@ -5,54 +5,85 @@ import './personCard.scss';
 // @desc    Add person
 // @route   GET /addNew
 // @access  Public
-export const AddPerson = () => {
-  const [state, setState] = useState({
+export const AddPerson = (props) => {
+  const [values, setValues] = useState({
     username: "",
     password: "",
     firstName: "",
     lastName: "",
   })
+  const id = Math.max(...(props.persons.map(item => item.id))) + 1
 
-  const onClick = (username, password, firstName, lastName) => {
-    setTimeout(() => {
-      setState(
-        username,
-        password,
-        firstName,
-        lastName,
-      )
-      localStorage.setItem(state)
-    }, 1000)
+  const changeHandler = e => {
+    setValues({...values, [e.target.name]: e.target.value})
+      }
+
+  // TODO: Need refactor on Redux
+  const onClick = () => {
+    localStorage.setItem(id, JSON.stringify(values))
   }
-
-
 
   return (
     <Form>
       <Form.Label><h2>Add new user</h2></Form.Label>
 
-      <Form.Group className="mb-3" controlId="formBasicEmail">
+      <Form.Group className="mb-3" controlId="">
+        <Form.Label>ID</Form.Label>
+        <Form.Control
+          disabled
+          name="id"
+          value={id}
+          onChange={changeHandler}/>
+      </Form.Group>
+      <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
         <Form.Label>First name</Form.Label>
-        <Form.Control type="firstName" id="UN" placeholder="Your name"/>
+        <Form.Control
+          required
+          name="firstName"
+          placeholder="Your name"
+          onChange={changeHandler}/>
       </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicEmail">
+      <Form.Group className="mb-3" controlId="exampleForm.ControlInput3">
         <Form.Label>Last name</Form.Label>
-        <Form.Control type="lastName" placeholder="Your surname"/>
+        <Form.Control
+          name="lastName"
+          placeholder="Your surname"
+          onChange={changeHandler}/>
       </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicEmail">
+      <Form.Group className="mb-3" controlId="exampleForm.ControlInput4">
         <Form.Label>Username</Form.Label>
-        <Form.Control type="username" placeholder="Username"/>
+        <Form.Control
+          required
+          name="username"
+          placeholder="Username"
+          onChange={changeHandler}/>
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Password</Form.Label>
-        <Form.Control type="password" placeholder="Password"/>
+        <Form.Control
+          required
+          type="password"
+          name="password"
+          placeholder="Password"
+          onChange={changeHandler}/>
+        <Form.Text
+          id="passwordHelpBlock"
+          muted>
+            Your password must be 4+ characters long.
+        </Form.Text>
       </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicPassword">
+      <Form.Group className="mb-3" controlId="formBasicPassword1">
         <Form.Label>Repeat password</Form.Label>
-        <Form.Control type="password" placeholder="Repeat password"/>
+        <Form.Control
+          required
+          type="password"
+          placeholder="Repeat password"
+          onChange={changeHandler}/>
       </Form.Group>
-      <Button variant="primary" type="submit" onClick={onClick}>
-        Create card
+      <Button
+        variant="primary"
+        onClick={onClick}>
+          Create card
       </Button>
     </Form>
   )

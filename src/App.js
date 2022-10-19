@@ -21,7 +21,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<AllCards persons={persons} />} exact />
-          <Route path="/addNewUser" element={<AddPerson />} exact />
+          <Route path="/addNewUser" element={<AddPerson persons={persons}/>} exact />
           <Route path=":id" element={<PersonCard persons={persons} />} />
         </Routes>
       </Router>
