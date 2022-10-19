@@ -2,22 +2,25 @@ import React from "react";
 import {Button, Form} from "react-bootstrap";
 import {useParams} from "react-router-dom";
 import './personCard.scss';
+import {getValuesLS} from "../../controllers/localStorageController";
 
 // @desc    Show card
 // @route   GET /
 // @access  Public
-export const PersonCard = (props) => {
+export const PersonCard = () => {
   const { id } = useParams()
-  const cardToShow = props.persons
-    .find(item => item.id === Number(id))
+  const cardToShow = JSON.parse(getValuesLS(id))
 
   return (
     <Form>
-      <Form.Label><h2>{cardToShow.username}</h2></Form.Label>
+      <Form.Label><h2>{cardToShow.id}</h2></Form.Label>
 
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>First name</Form.Label>
-        <Form.Control type="firstName" placeholder="Your name" value={cardToShow.firstName}/>
+        <Form.Control
+          type="firstName"
+          placeholder="Your name"
+          value={cardToShow.firstName}/>
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Last name</Form.Label>

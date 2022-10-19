@@ -8,14 +8,13 @@ import {getValuesLS, putValuesLS} from "../../controllers/localStorageController
 // @access  Public
 export const AddPerson = (props) => {
   const [values, setValues] = useState({
+    id: "",
     username: "",
     password: "",
     firstName: "",
     lastName: "",
   })
-  const id = Math.max(...(props.persons.map(item => item.id))) + 1
-  const idLS = JSON.parse(getValuesLS())
-  console.log(idLS)
+  const id = Object.keys(localStorage).length + 1
 
   const changeHandler = e => {
     setValues({...values, [e.target.name]: e.target.value})
@@ -24,6 +23,7 @@ export const AddPerson = (props) => {
   // TODO: Need refactor on Redux
   const onClick = () => {
     putValuesLS(id, values)
+    setValues({...values, id: id+1}) // TODO: Need auto-redirect on "/"
   }
 
   return (
