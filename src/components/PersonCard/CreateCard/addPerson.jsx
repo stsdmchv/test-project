@@ -1,7 +1,7 @@
 import React from "react";
 import {putValuesLS} from "../../../controllers/localStorageController";
 import {useNavigate} from "react-router-dom";
-import {useForm, Controller, FormProvider} from "react-hook-form";
+import {useForm, FormProvider} from "react-hook-form";
 import {ID, FirstName, LastName, Password, Username} from "./fields/Fields";
 import * as yup from 'yup';
 import {yupResolver} from "@hookform/resolvers/yup";
@@ -32,7 +32,7 @@ export const AddPerson = () => {
             putValuesLS(id, data)
             navigate('/')
           })}>
-          <ID props={id}/>
+          <ID id={id}/>
           <br/>
           <br/>
           <FirstName />
