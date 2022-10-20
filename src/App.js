@@ -2,7 +2,7 @@ import React from "react";
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import {PersonCard} from "./components/PersonCard/personCard";
 import {AllCards} from "./components/Home/allCards";
-import {AddPerson} from "./components/PersonCard/addPerson";
+import {AddPerson, ValidationSchema} from "./components/PersonCard/addPerson";
 import {Header} from "./components/Home/Header"
 
 function App() {
@@ -13,6 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<AllCards />} exact />
           <Route path="/addNewUser" element={<AddPerson />} />
+          <Route path="/vs" element={<ValidationSchema />} />
           <Route path=":id" element={<PersonCard />} />
         </Routes>
       </Router>
