@@ -2,10 +2,10 @@ import React from "react";
 import {useParams, useNavigate} from "react-router-dom";
 import '../../styles.scss';
 import {getValuesLS, putValuesLS} from "../../controllers/localStorageController";
-import * as yup from "yup";
 import {FormProvider, useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup/dist/yup";
 import {FirstName, ID, LastName, Password, Username} from "./CreateCard/fields/Fields";
+import schema from "./CreateCard/fields/schema";
 
 // @desc    Show card
 // @route   GET /
@@ -14,14 +14,6 @@ export const PersonCard = () => {
   const { id } = useParams()
   const cardToShow = JSON.parse(getValuesLS(id))
   const navigate = useNavigate()
-
-  const schema = yup.object().shape({
-    id: yup.number().required(),
-    firstName: yup.string().required().min(2),
-    lastName: yup.string(),
-    username: yup.string().required().min(3),
-    password: yup.string().required().min(4),
-  })
 
   const methods = useForm({resolver: yupResolver(schema)})
 
