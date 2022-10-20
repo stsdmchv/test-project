@@ -1,7 +1,7 @@
 import React from "react";
 import {Button, Form} from "react-bootstrap";
 import {useParams, useNavigate} from "react-router-dom";
-import './personCard.scss';
+import '../../styles.scss';
 import {getValuesLS} from "../../controllers/localStorageController";
 
 // @desc    Show card

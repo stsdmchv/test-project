@@ -1,106 +1,66 @@
-import React, {useState} from "react";
-import {Button, Form} from "react-bootstrap";
-import './personCard.scss';
+import React from "react";
+import '../../styles.scss';
 import {putValuesLS} from "../../controllers/localStorageController";
 import {useNavigate} from "react-router-dom";
+import {useForm} from "react-hook-form";
 
 // @desc    Add person
-// @route   GET /addNew
+// @route   GET /addNewUser
 // @access  Public
 export const AddPerson = () => {
-  const id = Object.keys(localStorage).length + 1
-
-  const [values, setValues] = useState({
-    id: id,
-    username: "",
-    password: "",
-    firstName: "",
-    lastName: "",
-  })
-
-  const changeHandler = e => {
-    const requiredFields = ['username', 'password', 'firstName']
-    // need render errors
-    if (e.target.name === 'username' && e.target.value.length > 2) setValues({...values, [e.target.name]: e.target.value})
-    if (e.target.name === 'password' && e.target.value.length > 3) setValues({...values, [e.target.name]: e.target.value})
-    if (e.target.name === 'firstName' && e.target.value.length > 1) setValues({...values, [e.target.name]: e.target.value})
-    if (!requiredFields.entries(e.target.name)) setValues({...values, [e.target.name]: e.target.value})
-      }
+  let id = Object.keys(localStorage).length + 1
   let navigate = useNavigate();
 
-  // TODO: Need refactor on Redux
-  const onClick = () => {
-    setValues({...values, id: id+1}) // TODO: Need auto-redirect on "/"
-    putValuesLS(id, values)
-    navigate('/')
-  }
+  const {
+    register,
+    handleSubmit,
+    formState: {errors},
+    unregister,
+    watch,
+  } = useForm({
+    defaultValues: {
+      id: id,
+    }
+  })
 
   return (
-    <Form>
-      <Form.Label><h2>Add new user</h2></Form.Label>
-
-      <Form.Group className="mb-3" controlId="">
-        <Form.Label>ID</Form.Label>
-        <Form.Control
-          disabled
-          name="id"
-          value={id}
-          onChange={changeHandler}/>
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
-        <Form.Label>First name</Form.Label>
-        <Form.Control
-          required
-          name="firstName"
-          placeholder="Your name"
-          onChange={changeHandler}/>
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="exampleForm.ControlInput3">
-        <Form.Label>Last name</Form.Label>
-        <Form.Control
-          name="lastName"
-          placeholder="Your surname"
-          onChange={changeHandler}/>
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="exampleForm.ControlInput4">
-        <Form.Label>Username</Form.Label>
-        <Form.Control
-          required
-          name="username"
-          placeholder="Username"
-          onChange={changeHandler}/>
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
-        <Form.Control
-          required
-          type="password"
-          name="password"
-          placeholder="Password"
-          onChange={changeHandler}/>
-        <Form.Text
-          id="passwordHelpBlock"
-          muted>
-            Your password must be 4+ characters long.
-        </Form.Text>
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicPassword1">
-        <Form.Label>Repeat password</Form.Label>
-        <Form.Control
-          required
-          type="password"
-          placeholder="Repeat password"/>
-      </Form.Group>
-      <Button
-        variant="primary"
-        onClick={onClick}>
-          Create card
-      </Button>
-      <Button
-        variant="secondary"
-        onClick={()=>{navigate('/', {replace:true})}}>
-          Back
-      </Button>
-    </Form>
+    <div>
+      <h1>User form</h1>
+      <form
+        onSubmit={handleSubmit((data) => {
+          unregister('confirmPassword')
+          putValuesLS(id, data)
+          navigate('/')
+        })}
+      >
+        <input {...register("id")} placeholder="id"/>
+        <p>{errors.id?.message}</p>
+        <input {...register("firstName", {
+          required: 'Type ur name', minLength: {
+            value: 2,
+            message: 'Min length = 2'
+          }
+        })} placeholder="First Name"/>
+        <p>{errors.firstName?.message}</p>
+        <input {...register("lastName")} placeholder="Last Name"/>
+        <p>{errors.id?.message}</p>
+        <input {...register("username", {
+          required: 'Need create a username', minLength: {
+            value: 3,
+            message: 'Min length = 3'
+          }
+        })} placeholder="Username"/>
+        <p>{errors.username?.message}</p>
+        <input {...register("password", {
+          required: 'U need to come up with a password', minLength: {
+            value: 4,
+            message: 'Min length = 4'
+          }
+        })} placeholder="Password"/>
+        <p>{errors.password?.message}</p>
+        <input {...register("confirmPassword")} placeholder="Confirm password"/>
+        <input type="submit"/>
+      </form>
+    </div>
   )
 }
