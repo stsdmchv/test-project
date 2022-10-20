@@ -23,14 +23,13 @@ export const ID = ({id}) => {
   )
 }
 
-export const FirstName = () => {
+export const FirstName = (props) => {
   const {control, formState: { errors }} = useFormContext()
-
   return (
     <Controller
       name='firstName'
       control={control}
-      defaultValue=''
+      defaultValue={props ? props.firstName : 'b'}
       render={({field}) => (
         <TextField
           {...field}
@@ -44,14 +43,14 @@ export const FirstName = () => {
   )
 }
 
-export const LastName = () => {
+export const LastName = (props) => {
   const {control, formState: { errors }} = useFormContext()
 
   return (
     <Controller
       name='lastName'
       control={control}
-      defaultValue=''
+      defaultValue={props ? props.lastName : ''}
       render={({field}) => (
         <TextField
           {...field}
@@ -65,35 +64,14 @@ export const LastName = () => {
   )
 }
 
-export const Password = () => {
-  const {control, formState: { errors }} = useFormContext()
-
-  return (
-    <Controller
-      name='password'
-      control={control}
-      defaultValue=''
-      render={({field}) => (
-        <TextField
-          {...field}
-          label='Password'
-          variant='outlined'
-          error={!!errors.password}
-          helperText={errors.password ? errors.password?.message:''}
-        />
-
-      )}/>
-  )
-}
-
-export const Username = () => {
+export const Username = (props) => {
   const {control, formState: { errors }} = useFormContext()
 
   return (
     <Controller
       name='username'
       control={control}
-      defaultValue=''
+      defaultValue={props ? props.userName : ''}
       render={({field}) => (
         <TextField
           {...field}
@@ -101,6 +79,27 @@ export const Username = () => {
           variant='outlined'
           error={!!errors.username}
           helperText={errors.username ? errors.username?.message:''}
+        />
+
+      )}/>
+  )
+}
+
+export const Password = (props) => {
+  const {control, formState: { errors }} = useFormContext()
+
+  return (
+    <Controller
+      name='password'
+      control={control}
+      defaultValue={props ? props.password : ''}
+      render={({field}) => (
+        <TextField
+          {...field}
+          label='Password'
+          variant='outlined'
+          error={!!errors.password}
+          helperText={errors.password ? errors.password?.message:''}
         />
 
       )}/>
