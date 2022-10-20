@@ -17,8 +17,13 @@ export const AllCards = () => {
         <FormProvider {...methods}>
           <form>
             <Username userName={user.username} />
-            <FirstName firstName={user.firstName} />
-            <LastName lastName={user.lastName} />
+            <br/>
+            <div>
+              <FirstName firstName={user.firstName} />
+              <br/>
+              <LastName lastName={user.lastName} />
+              <br/>
+            </div>
           </form>
         </FormProvider >
       </NavLink>
