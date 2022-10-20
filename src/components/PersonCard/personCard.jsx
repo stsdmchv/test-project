@@ -1,6 +1,6 @@
 import React from "react";
 import {Button, Form} from "react-bootstrap";
-import {useParams} from "react-router-dom";
+import {useParams, useNavigate} from "react-router-dom";
 import './personCard.scss';
 import {getValuesLS} from "../../controllers/localStorageController";
 
@@ -10,6 +10,8 @@ import {getValuesLS} from "../../controllers/localStorageController";
 export const PersonCard = () => {
   const { id } = useParams()
   const cardToShow = JSON.parse(getValuesLS(id))
+  const navigate = useNavigate()
+
 
   return (
     <Form>
@@ -35,10 +37,10 @@ export const PersonCard = () => {
         <Form.Control placeholder="Password" value={cardToShow.password}/>
       </Form.Group>
       <Form.Group>
-        <Button variant="primary" type="submit">
+        <Button variant="primary" type="submit" onClick={()=>{navigate('/', {replace:true})}}>
           Save
         </Button>
-        <Button color="red" variant="outline-secondary" type="submit">
+        <Button color="red" variant="outline-secondary" type="submit" onClick={()=>{navigate('/', {replace:true})}}>
           Delete
         </Button>
       </Form.Group>
