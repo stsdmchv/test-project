@@ -12,7 +12,6 @@ export const PersonCard = () => {
   const cardToShow = JSON.parse(getValuesLS(id))
   const navigate = useNavigate()
 
-
   return (
     <Form>
       <Form.Label><h2>{cardToShow.id}</h2></Form.Label>
@@ -40,7 +39,7 @@ export const PersonCard = () => {
         <Button variant="primary" type="submit" onClick={()=>{navigate('/', {replace:true})}}>
           Save
         </Button>
-        <Button color="red" variant="outline-secondary" type="submit" onClick={()=>{navigate('/', {replace:true})}}>
+        <Button variant="outline-secondary" type="submit" onClick={()=>{navigate('/', {replace:true})}}>
           Delete
         </Button>
       </Form.Group>
