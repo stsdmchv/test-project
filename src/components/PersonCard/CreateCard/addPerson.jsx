@@ -5,6 +5,7 @@ import {useForm, FormProvider} from "react-hook-form";
 import {ID, FirstName, LastName, Password, Username} from "./fields/Fields";
 import * as yup from 'yup';
 import {yupResolver} from "@hookform/resolvers/yup";
+import '../../../styles.scss'
 
 // @desc    Add person
 // @route   GET /addNewUser
@@ -36,9 +37,17 @@ export const AddPerson = () => {
           <br/>
           <br/>
           <FirstName />
+          <br/>
+          <br/>
           <LastName />
+          <br/>
+          <br/>
           <Username />
+          <br/>
+          <br/>
           <Password />
+          <br/>
+          <br/>
           <input type="submit"/>
         </form>
       </FormProvider>
