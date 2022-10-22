@@ -1,7 +1,7 @@
 import React from "react";
 import {useParams, useNavigate} from "react-router-dom";
 import '../../styles.scss';
-import {getValuesLS, putValuesLS} from "../../controllers/localStorageController";
+import {getValuesLS, putValuesLS, deleteCard} from "../../controllers/localStorageController";
 import {FormProvider, useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup/dist/yup";
 import {FirstName, ID, LastName, Password, Username} from "./CreateCard/fields/Fields";
@@ -22,11 +22,18 @@ export const PersonCard = () => {
       <h1>User form</h1>
       <FormProvider {...methods}>
         <form
-          onSubmit={methods.handleSubmit((data) => {
-            methods.unregister('confirmPassword')
-            putValuesLS(id, data)
-            navigate('/')
-          })}>
+          onSubmit={(event) => {
+            const buttonName = event.nativeEvent.submitter.name
+            if (buttonName === 'save'){
+              methods.handleSubmit((data) => {
+                methods.unregister('confirmPassword')
+                putValuesLS(id, data)
+                navigate('/')})}
+            if (buttonName === 'delete'){
+              deleteCard(id)
+              navigate('/')}
+            }
+          }>
           <ID id={id}/>
           <br/>
           <br/>
@@ -42,7 +49,8 @@ export const PersonCard = () => {
           <Password password={cardToShow.password}/>
           <br/>
           <br/>
-          <input type="submit"/>
+          <button type="submit" name="save">Submit</button>
+          <button type="submit" name="delete">Delete card</button>
         </form>
       </FormProvider>
     </div>

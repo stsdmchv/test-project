@@ -20,3 +20,7 @@ export const getValuesLS = (key = 0) => {
 export const putValuesLS = (id, values) => {
   localStorage.setItem(id, JSON.stringify(values))
 }
+
+export const deleteCard = id => {
+  localStorage.removeItem(id)
+}
