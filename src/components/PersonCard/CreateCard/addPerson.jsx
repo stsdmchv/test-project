@@ -11,7 +11,7 @@ import schema from "./fields/schema";
 // @route   GET /addNewUser
 // @access  Public
 export const AddPerson = () => {
-  let id = Object.keys(localStorage).length + 1
+  let id = Math.max(Object.keys(localStorage).map(item => item)) + 1
   let navigate = useNavigate();
 
   const methods = useForm({resolver: yupResolver(schema)})
