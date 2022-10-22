@@ -7,11 +7,19 @@ import {yupResolver} from "@hookform/resolvers/yup";
 import '../../../styles.scss'
 import schema from "./fields/schema";
 
+Array.prototype.max = function () {
+  return Math.max.apply(null, this);
+};
+
+const calculateCardId = () => {
+  const id = (Object.keys(localStorage)).max() + 1
+  return isFinite(id) ? id : 1;
+}
 // @desc    Add person
 // @route   GET /addNewUser
 // @access  Public
 export const AddPerson = () => {
-  let id = Math.max(Object.keys(localStorage).map(item => item)) + 1
+  let id = calculateCardId()
   let navigate = useNavigate();
 
   const methods = useForm({resolver: yupResolver(schema)})
@@ -29,16 +37,16 @@ export const AddPerson = () => {
           <ID id={id}/>
           <br/>
           <br/>
-          <FirstName />
+          <FirstName/>
           <br/>
           <br/>
-          <LastName />
+          <LastName/>
           <br/>
           <br/>
-          <Username />
+          <Username/>
           <br/>
           <br/>
-          <Password />
+          <Password/>
           <br/>
           <br/>
           <input type="submit"/>
