@@ -12,21 +12,19 @@ export const AllCards = () => {
   const methods = useForm({resolver: yupResolver(schema)})
 
   return (
-    users.map((user) => (
-      <NavLink to={`/${user.id}`}>
-        <FormProvider {...methods}>
-          <form>
-            <Username userName={user.username} />
-            <br/>
-            <div>
-              <FirstName firstName={user.firstName} />
+    users.map((user,index) => (
+        <NavLink to={`/${user.id}`}>
+          <FormProvider key={index.toString()} value={index} {...methods}>
+            <form>
+              <Username userName={user.username}/>
               <br/>
-              <LastName lastName={user.lastName} />
+              <FirstName firstName={user.firstName}/>
               <br/>
-            </div>
-          </form>
-        </FormProvider >
-      </NavLink>
+              <LastName lastName={user.lastName}/>
+              <br/>
+            </form>
+          </FormProvider>
+        </NavLink>
     ))
   )
 }
