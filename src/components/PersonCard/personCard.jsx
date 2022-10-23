@@ -43,7 +43,6 @@ export const PersonCard = () => {
           <LastName lastName={cardToShow.lastName}/>
           <Username userName={cardToShow.username}/>
           <Password password={cardToShow.password}/>
-          <TextField placeholder='Password' variant='outlined'/>
           <Roles role={cardToShow.roles}/>
           <WorkBorders idB={cardToShow.workBorder}/>
           <button type="submit" name="save">Submit</button>
