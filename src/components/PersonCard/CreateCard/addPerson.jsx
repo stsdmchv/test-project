@@ -34,22 +34,22 @@ export const AddPerson = () => {
             putValuesLS(id, data)
             navigate('/')
           })}>
-          <ID id={id}/>
+          <ID id={id} />
           <br/>
           <br/>
-          <FirstName/>
+          <FirstName />
           <br/>
           <br/>
-          <LastName/>
+          <LastName />
           <br/>
           <br/>
-          <Username/>
+          <Username />
           <br/>
           <br/>
-          <Password/>
+          <Password />
           <br/>
           <br/>
-          <Roles/>
+          <Roles />
           <input type="submit"/>
         </form>
       </FormProvider>

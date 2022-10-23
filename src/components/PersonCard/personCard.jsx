@@ -49,7 +49,7 @@ export const PersonCard = () => {
           <Password password={cardToShow.password}/>
           <br/>
           <br/>
-          <Roles />
+          <Roles role={cardToShow.roles}/>
           <br/>
           <br/>
           <button type="submit" name="save">Submit</button>

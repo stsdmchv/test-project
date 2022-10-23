@@ -87,14 +87,14 @@ export const Username = (props) => {
   )
 }
 
-export const Password = (props) => {
+export const Password = ({password}) => {
   const {control, formState: {errors}} = useFormContext()
 
   return (
     <Controller
       name='password'
       control={control}
-      defaultValue={props ? props.password : ''}
+      defaultValue={password ? password : ''}
       render={({field}) => (
         <TextField
           {...field}
@@ -108,7 +108,7 @@ export const Password = (props) => {
   )
 }
 
-export const Roles = (props) => {
+export const Roles = ({role}) => {
   const {control, register} = useFormContext()
   return (
     <Controller
@@ -122,7 +122,7 @@ export const Roles = (props) => {
          options={ROLES}
          value={ROLES.find((c) => c.value === field.value)}
          onChange={(val) => field.onChange(val)}
-         defaultValue={ROLES.find(c => c.value===1)}
+         defaultValue={role ? role : ROLES.find(c => c.value===1)}
        />
      )}
     />
