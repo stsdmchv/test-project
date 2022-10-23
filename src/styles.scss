@@ -8,6 +8,12 @@ body {
   "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
   sans-serif;
   }
+
+.AddButton{
+  background-color: $base-color;
+  color: $back-color
+  }
+
 form{
   display: flex;
   flex-direction: column;
@@ -69,7 +75,6 @@ input[type="submit"] {
   color: $back-color;
   text-transform: uppercase;
   border: none;
-  margin-top: 40px;
   padding: 20px;
   font-size: 16px;
   font-weight: 100;
@@ -122,15 +127,4 @@ button[type="button"] {
 
 hr {
   margin-top: 30px;
-  }
-
-button {
-  display: block;
-  appearance: none;
-  margin-top: 40px;
-  border: 1px solid $primary-color;
-  margin-bottom: 20px;
-  text-transform: uppercase;
-  padding: 10px 20px;
-  border-radius: 4px;
   }

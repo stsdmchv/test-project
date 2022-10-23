@@ -1,12 +1,10 @@
 import React from "react";
 import {useParams, useNavigate} from "react-router-dom";
-import '../../styles.scss';
 import {getValuesLS, putValuesLS, deleteCard} from "../../controllers/localStorageController";
 import {FormProvider, useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup/dist/yup";
 import {FirstName, ID, LastName, Password, Roles, Username, WorkBorders} from "./CreateCard/fields/Fields";
 import schema from "./CreateCard/fields/schema";
-import {TextField} from "@material-ui/core";
 
 // @desc    Show card
 // @route   GET /
