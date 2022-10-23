@@ -1,8 +1,11 @@
 import React from "react";
-import {Button, Form} from "react-bootstrap";
 import {useParams, useNavigate} from "react-router-dom";
-import './personCard.scss';
-import {getValuesLS} from "../../controllers/localStorageController";
+import '../../styles.scss';
+import {getValuesLS, putValuesLS, deleteCard} from "../../controllers/localStorageController";
+import {FormProvider, useForm} from "react-hook-form";
+import {yupResolver} from "@hookform/resolvers/yup/dist/yup";
+import {FirstName, ID, LastName, Password, Roles, Username} from "./CreateCard/fields/Fields";
+import schema from "./CreateCard/fields/schema";
 
 // @desc    Show card
 // @route   GET /
@@ -12,37 +15,47 @@ export const PersonCard = () => {
   const cardToShow = JSON.parse(getValuesLS(id))
   const navigate = useNavigate()
 
-  return (
-    <Form>
-      <Form.Label><h2>{cardToShow.id}</h2></Form.Label>
+  const methods = useForm({resolver: yupResolver(schema)})
 
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>First name</Form.Label>
-        <Form.Control
-          type="firstName"
-          placeholder="Your name"
-          value={cardToShow.firstName}/>
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Last name</Form.Label>
-        <Form.Control type="lastName" placeholder="Your surname" value={cardToShow.lastName}/>
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Username</Form.Label>
-        <Form.Control type="username" placeholder="Username" value={cardToShow.username}/>
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
-        <Form.Control placeholder="Password" value={cardToShow.password}/>
-      </Form.Group>
-      <Form.Group>
-        <Button variant="primary" type="submit" onClick={()=>{navigate('/', {replace:true})}}>
-          Save
-        </Button>
-        <Button variant="outline-secondary" type="submit" onClick={()=>{navigate('/', {replace:true})}}>
-          Delete
-        </Button>
-      </Form.Group>
-    </Form>
+  return (
+    <div>
+      <h1>User form</h1>
+      <FormProvider {...methods}>
+        <form
+          onSubmit={(event) => {
+            const buttonName = event.nativeEvent.submitter.name
+            if (buttonName === 'save'){
+              methods.handleSubmit((data) => {
+                methods.unregister('confirmPassword')
+                putValuesLS(id, data)
+                navigate('/')})}
+            if (buttonName === 'delete'){
+              deleteCard(id)
+              navigate('/')}
+            }
+          }>
+          <ID id={id}/>
+          <br/>
+          <br/>
+          <FirstName firstName={cardToShow.firstName}/>
+          <br/>
+          <br/>
+          <LastName lastName={cardToShow.lastName}/>
+          <br/>
+          <br/>
+          <Username userName={cardToShow.username}/>
+          <br/>
+          <br/>
+          <Password password={cardToShow.password}/>
+          <br/>
+          <br/>
+          <Roles role={cardToShow.roles}/>
+          <br/>
+          <br/>
+          <button type="submit" name="save">Submit</button>
+          <button type="submit" name="delete">Delete card</button>
+        </form>
+      </FormProvider>
+    </div>
   )
 }
