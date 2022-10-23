@@ -2,7 +2,7 @@ import React from "react";
 import {putValuesLS} from "../../../controllers/localStorageController";
 import {useNavigate} from "react-router-dom";
 import {useForm, FormProvider} from "react-hook-form";
-import {ID, FirstName, LastName, Password, Username} from "./fields/Fields";
+import {ID, FirstName, LastName, Password, Username, Roles} from "./fields/Fields";
 import {yupResolver} from "@hookform/resolvers/yup";
 import '../../../styles.scss'
 import schema from "./fields/schema";
@@ -49,6 +49,7 @@ export const AddPerson = () => {
           <Password/>
           <br/>
           <br/>
+          <Roles/>
           <input type="submit"/>
         </form>
       </FormProvider>
