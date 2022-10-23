@@ -24,15 +24,15 @@ export const PersonCard = () => {
         <form
           onSubmit={(event) => {
             const buttonName = event.nativeEvent.submitter.name
+            console.log(buttonName)
             if (buttonName === 'save'){
               methods.handleSubmit((data) => {
-                methods.unregister('confirmPassword')
                 putValuesLS(id, data)
-                console.log("Карточка обновлена!")
+                console.log("Card updated!")
                 navigate('/')})}
             if (buttonName === 'delete'){
               deleteCard(id)
-              console.log("Карточка удалена!")
+              console.log("Card created!")
               navigate('/')}
             }
           }>
