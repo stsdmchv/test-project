@@ -14,12 +14,16 @@ body {
   color: $back-color
   }
 
+.Card{
+
+  }
+
 form{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   width: 50%;
   gap:15px;
-  padding-bottom: 20px;
+  padding-bottom: 50px;
   }
 
 form {
