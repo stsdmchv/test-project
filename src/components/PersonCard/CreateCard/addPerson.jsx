@@ -30,9 +30,9 @@ export const AddPerson = () => {
       <FormProvider {...methods}>
         <form
           onSubmit={methods.handleSubmit((data) => {
-            methods.unregister('confirmPassword')
+            // methods.unregister('confirmPassword')
             putValuesLS(id, data)
-            console.log("Карточка создана!")
+            console.log("Card created!")
             navigate('/')
           })}>
           <ID id={id} />

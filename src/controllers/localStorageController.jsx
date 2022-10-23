@@ -2,12 +2,12 @@ import React from "react";
 
 //@desc   Get values from localStorage
 export const getValuesLS = (key = 0) => {
-  if (key === 0){
+  if (key === 0) {
     const values = [],
       keys = Object.keys(localStorage)
     let iterator = keys.length
 
-    while (iterator--){
+    while (iterator--) {
       values.push(localStorage.getItem(keys[iterator]))
     }
     return values
