@@ -116,6 +116,7 @@ export const Roles = ({role}) => {
      name='roles'
      render={({field}) => (
        <Select
+         isMulti
          {...register('role')}
          name={field.name}
          ref={field.ref}
@@ -139,6 +140,7 @@ export const WorkBorders = ({idB}) => {
       name='workBorder'
       render={({field}) => (
         <Select
+          isMulti
           {...register('workBorder')}
           name={field.name}
           ref={field.ref}
