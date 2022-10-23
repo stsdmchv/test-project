@@ -6,6 +6,7 @@ import {FormProvider, useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup/dist/yup";
 import {FirstName, ID, LastName, Password, Roles, Username, WorkBorders} from "./CreateCard/fields/Fields";
 import schema from "./CreateCard/fields/schema";
+import {TextField} from "@material-ui/core";
 
 // @desc    Show card
 // @route   GET /
@@ -38,23 +39,12 @@ export const PersonCard = () => {
         <form
           onSubmit={methods.handleSubmit(onSub)}>
           <ID id={id}/>
-          <br/>
-          <br/>
           <FirstName firstName={cardToShow.firstName}/>
-          <br/>
-          <br/>
           <LastName lastName={cardToShow.lastName}/>
-          <br/>
-          <br/>
           <Username userName={cardToShow.username}/>
-          <br/>
-          <br/>
           <Password password={cardToShow.password}/>
-          <br/>
-          <br/>
+          <TextField placeholder='Password' variant='outlined'/>
           <Roles role={cardToShow.roles}/>
-          <br/>
-          <br/>
           <WorkBorders idB={cardToShow.workBorder}/>
           <button type="submit" name="save">Submit</button>
           <button type="submit" name="delete">Delete card</button>
