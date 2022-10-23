@@ -4,7 +4,7 @@ import '../../styles.scss';
 import {getValuesLS, putValuesLS, deleteCard} from "../../controllers/localStorageController";
 import {FormProvider, useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup/dist/yup";
-import {FirstName, ID, LastName, Password, Roles, Username} from "./CreateCard/fields/Fields";
+import {FirstName, ID, LastName, Password, Roles, Username, WorkBorders} from "./CreateCard/fields/Fields";
 import schema from "./CreateCard/fields/schema";
 
 // @desc    Show card
@@ -52,6 +52,7 @@ export const PersonCard = () => {
           <Roles role={cardToShow.roles}/>
           <br/>
           <br/>
+          <WorkBorders idB={cardToShow.workBorder}/>
           <button type="submit" name="save">Submit</button>
           <button type="submit" name="delete">Delete card</button>
         </form>

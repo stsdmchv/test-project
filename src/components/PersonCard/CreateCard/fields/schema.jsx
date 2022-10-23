@@ -1,10 +1,17 @@
 import * as yup from "yup";
 
 export const ROLES = [
-  {value:1, label:'ANT'},
-  {value:2, label:'ANT_MANAGER'},
-  {value:3, label:'ANT_OFFICER'},
-  {value:4, label:'DEVELOPER'},
+  {label:'ANT'},
+  {label:'ANT_MANAGER'},
+  {label:'ANT_OFFICER'},
+  {label:'DEVELOPER'},
+]
+
+export const workBorders = [
+  {id:1, name:'Белгатой'},
+  {id:2, name:'Шали'},
+  {id:3, name:'Урус-Мартан'},
+
 ]
 
 const schema = yup.object().shape({
@@ -14,6 +21,7 @@ const schema = yup.object().shape({
   username: yup.string().required().min(3),
   password: yup.string().required().min(4),
   role: yup.string(),
+  workBorders: yup.string(),
 })
 
 export default schema
