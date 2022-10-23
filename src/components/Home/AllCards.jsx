@@ -14,7 +14,7 @@ export const AllCards = () => {
   return (
     users.map((user,index) => (
         <NavLink to={`/${user.id}`}>
-          <FormProvider key={index.toString()} value={index} {...methods}>
+          <FormProvider key={index+user.id} value={index} {...methods}>
             <form>
               <Username userName={user.username}/>
               <br/>

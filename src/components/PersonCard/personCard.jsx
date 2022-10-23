@@ -17,25 +17,26 @@ export const PersonCard = () => {
 
   const methods = useForm({resolver: yupResolver(schema)})
 
+  const onSub = (data, event) => {
+    event.preventDefault()
+    console.log(data)
+    const buttonName = event.nativeEvent.submitter.name
+      if (buttonName === 'save'){
+          putValuesLS(id, data)
+          console.log("Card updated!")
+          navigate('/')}
+      if (buttonName === 'delete'){
+        deleteCard(id)
+        console.log("Card created!")
+        navigate('/')}
+    }
+
   return (
     <div>
       <h1>User form</h1>
       <FormProvider {...methods}>
         <form
-          onSubmit={(event) => {
-            const buttonName = event.nativeEvent.submitter.name
-            console.log(buttonName)
-            if (buttonName === 'save'){
-              methods.handleSubmit((data) => {
-                putValuesLS(id, data)
-                console.log("Card updated!")
-                navigate('/')})}
-            if (buttonName === 'delete'){
-              deleteCard(id)
-              console.log("Card created!")
-              navigate('/')}
-            }
-          }>
+          onSubmit={methods.handleSubmit(onSub)}>
           <ID id={id}/>
           <br/>
           <br/>
