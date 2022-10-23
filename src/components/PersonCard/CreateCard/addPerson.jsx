@@ -32,6 +32,7 @@ export const AddPerson = () => {
           onSubmit={methods.handleSubmit((data) => {
             methods.unregister('confirmPassword')
             putValuesLS(id, data)
+            console.log("Карточка создана!")
             navigate('/')
           })}>
           <ID id={id} />

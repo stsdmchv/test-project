@@ -28,9 +28,11 @@ export const PersonCard = () => {
               methods.handleSubmit((data) => {
                 methods.unregister('confirmPassword')
                 putValuesLS(id, data)
+                console.log("Карточка обновлена!")
                 navigate('/')})}
             if (buttonName === 'delete'){
               deleteCard(id)
+              console.log("Карточка удалена!")
               navigate('/')}
             }
           }>
