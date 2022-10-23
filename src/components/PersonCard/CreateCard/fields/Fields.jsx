@@ -1,7 +1,7 @@
 import {TextField,} from "@material-ui/core";
 import {Controller, useFormContext} from "react-hook-form";
 import React from "react";
-import {ROLES} from "./schema";
+import {ROLES, workBorders} from "./schema";
 import Select from 'react-select'
 
 export const ID = ({id}) => {
@@ -120,11 +120,36 @@ export const Roles = ({role}) => {
          name={field.name}
          ref={field.ref}
          options={ROLES}
-         value={ROLES.find((c) => c.value === field.value)}
+         value={ROLES.find((c) => c.label === field.label)}
          onChange={(val) => field.onChange(val)}
-         defaultValue={role ? role : ROLES.find(c => c.value===1)}
+         defaultValue={role ? role : ROLES.find(c => c.label==='ANT')}
+         getOptionValue={(option) => option.label}
+         getOptionLabel={(option) => option.label}
        />
      )}
+    />
+  )
+}
+
+export const WorkBorders = ({idB}) => {
+  const {control, register} = useFormContext()
+  return (
+    <Controller
+      control={control}
+      name='workBorder'
+      render={({field}) => (
+        <Select
+          {...register('workBorder')}
+          name={field.name}
+          ref={field.ref}
+          options={workBorders}
+          value={workBorders.find((c) => c.id === field.value)}
+          onChange={(val) => field.onChange(val)}
+          defaultValue={idB ? idB : workBorders.find(c => c.id===1)}
+          getOptionValue={(option) => option.id}
+          getOptionLabel={(option) => option.name}
+        />
+      )}
     />
   )
 }
