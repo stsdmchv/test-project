@@ -1,10 +1,12 @@
 import React from "react";
-import {useParams, useNavigate} from "react-router-dom";
+import {useParams, useNavigate, NavLink} from "react-router-dom";
 import {getValuesLS, putValuesLS, deleteCard} from "../../controllers/localStorageController";
 import {FormProvider, useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup/dist/yup";
 import {FirstName, ID, LastName, Password, Roles, Username, WorkBorders} from "./CreateCard/fields/Fields";
 import schema from "./CreateCard/fields/schema";
+import {Button} from "@material-ui/core";
+import styles from "../../styles.scss";
 
 // @desc    Show card
 // @route   GET /
@@ -33,6 +35,9 @@ export const PersonCard = () => {
   return (
     <div>
       <h1>User form</h1>
+      <NavLink className={styles.AddButton} variant={"contained"} to={'/'}>
+        <Button>{'←'}</Button>
+      </NavLink>
       <FormProvider {...methods}>
         <form
           onSubmit={methods.handleSubmit(onSub)}>

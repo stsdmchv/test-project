@@ -7,6 +7,8 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
   "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
   sans-serif;
+  text-decoration: none;
+
   }
 
 .AddButton{
@@ -118,8 +120,8 @@ input[type="submit"] {
 button[type="button"] {
   display: block;
   appearance: none;
-  background: $primary-color;
-  color: white;
+  background: $base-color;
+  color: $back-color;
   border: none;
   text-transform: uppercase;
   padding: 10px 20px;

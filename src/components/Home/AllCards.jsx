@@ -17,7 +17,9 @@ export const AllCards = () => {
   return (
     <div>
       <h1>User cards</h1>
-      <Button className={styles.AddButton} variant={"contained"} href={'/addNewUser'}>Add new user</Button>
+      <NavLink className={styles.AddButton} variant={"contained"} to={'/addNewUser'}>
+        <Button type="button">Add new card</Button>
+      </NavLink>
       <TextField id="outlined-basic" label="Search by username" variant="standard" onChange={inputHandler}/>
       { search === '' ?
         users.map((user, index) => {

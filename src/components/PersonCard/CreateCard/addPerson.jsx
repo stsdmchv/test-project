@@ -1,11 +1,13 @@
 import React from "react";
 import {putValuesLS} from "../../../controllers/localStorageController";
-import {useNavigate} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 import {useForm, FormProvider} from "react-hook-form";
 import {ID, FirstName, LastName, Password, Username, Roles, WorkBorders} from "./fields/Fields";
 import {yupResolver} from "@hookform/resolvers/yup";
 import '../../../styles.scss'
 import schema from "./fields/schema";
+import styles from "../../../styles.scss";
+import {Button} from "@material-ui/core";
 
 Array.prototype.max = function () {
   return Math.max.apply(null, this);
@@ -27,6 +29,9 @@ export const AddPerson = () => {
   return (
     <div>
       <h1>User form</h1>
+      <NavLink className={styles.AddButton} variant={"contained"} to={'/'}>
+        <Button>{'←'}</Button>
+      </NavLink>
       <FormProvider {...methods}>
         <form
           onSubmit={methods.handleSubmit((data) => {
