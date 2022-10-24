@@ -23,18 +23,26 @@ export const AllCards = () => {
         </NavLink>
         <TextField id="outlined-basic" label="Search by username" variant="standard" onChange={inputHandler}/>
       </div>
-      <div style={{display: "flex", justifyContent: 'space-around', flexWrap:'wrap'}}>
+      <div style={{display: "flex", justifyContent: 'space-around', flexWrap:'wrap',}}>
         {search === '' ?
           users.map((user, index) => {
             return (
               <NavLink key={index + user.id} to={`/${user.id}`} style={{width:'35%', marginTop:'20px'}}>
                 <Card variant="outlined" sx={{minWidth: 275}}>
                   <CardContent>
-                    <Typography style={{direction:'rtl'}} sx={{fontSize: 14}} color="text.secondary" gutterBottom>{user.id}</Typography>
-                    <Typography style={{textAlign:'center'}} variant="h5" component="div">{user.username}</Typography>
+                    <Typography style={{direction:'rtl'}} sx={{fontSize: 14}} color="text.secondary" gutterBottom>
+                      {user.id}
+                    </Typography>
+                    <Typography style={{textAlign:'center'}} variant="h5" component="div">
+                      {user.username}
+                    </Typography>
                     <div style={{display:'flex', justifyContent:'center'}}>
-                      <Typography sx={{mb: 1.5}} color="text.secondary">{user.firstName}</Typography>
-                      <Typography style={{marginLeft:'15px'}} sx={{mb: 1.5}} color="text.secondary">{user.lastName}</Typography>
+                      <Typography sx={{mb: 1.5}} color="text.secondary">
+                        {user.firstName}
+                      </Typography>
+                      <Typography style={{marginLeft:'15px'}} sx={{mb: 1.5}} color="text.secondary">
+                        {user.lastName}
+                      </Typography>
                     </div>
                   </CardContent>
                 </Card>
