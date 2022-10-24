@@ -14,20 +14,23 @@ function List(props) {
     }
   })
   return (
-    <ul>
+    <div style={{display: "flex", justifyContent: 'space-around', flexWrap:'wrap'}}>
       {filteredData.map((user, index) => (
-        <NavLink key={index + user.id} to={`/${user.id}`}>
-          <Card variant="outlined" sx={{ minWidth: 275 }}>
+        <NavLink key={index + user.id} to={`/${user.id}`} style={{width:'100%', marginTop:'20px'}}>
+          <Card variant="outlined" sx={{minWidth: 275}}>
             <CardContent>
-              <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>{user.id}</Typography>
-              <Typography variant="h5" component="div">{user.username}</Typography>
-              <Typography sx={{ mb: 1.5 }} color="text.secondary">{user.firstName}</Typography>
-              <Typography variant="body2">{user.lastName}</Typography>
+              <Typography style={{direction:'rtl'}} sx={{fontSize: 14}} color="text.secondary" gutterBottom>{user.id}</Typography>
+              <Typography style={{textAlign:'center'}} variant="h5" component="div">{user.username}</Typography>
+              <div style={{display:'flex', justifyContent:'center'}}>
+                <Typography sx={{mb: 1.5}} color="text.secondary">{user.firstName}</Typography>
+                <Typography style={{marginLeft:'15px'}} sx={{mb: 1.5}} color="text.secondary">{user.lastName}</Typography>
+              </div>
             </CardContent>
           </Card>
         </NavLink>
       ))}
-    </ul>
+    </div>
+
   )
 }
 
