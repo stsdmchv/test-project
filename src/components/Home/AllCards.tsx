@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {getValuesLS} from "../../controllers/localStorageController";
+import {getValuesLS} from "../../controllers/localStorageController.tsx";
 import {NavLink} from "react-router-dom";
 import {Button, Card, CardContent, TextField, Typography} from "@material-ui/core";
 import styles from '../../styles.scss'

@@ -1,6 +1,6 @@
 import React from "react";
 import {useParams, useNavigate, NavLink} from "react-router-dom";
-import {getValuesLS, putValuesLS, deleteCard} from "../../controllers/localStorageController";
+import {getValuesLS, putValuesLS, deleteCard} from "../../controllers/localStorageController.tsx";
 import {FormProvider, useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup/dist/yup";
 import {FirstName, ID, LastName, Password, Roles, Username, WorkBorders} from "./CreateCard/fields/Fields";

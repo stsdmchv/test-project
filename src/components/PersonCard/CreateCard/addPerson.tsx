@@ -1,5 +1,5 @@
 import React from "react";
-import {putValuesLS} from "../../../controllers/localStorageController";
+import {putValuesLS} from "../../../controllers/localStorageController.tsx";
 import {NavLink, useNavigate} from "react-router-dom";
 import {useForm, FormProvider} from "react-hook-form";
 import {ID, FirstName, LastName, Password, Username, Roles, WorkBorders} from "./fields/Fields";

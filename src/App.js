@@ -1,8 +1,8 @@
 import React from "react";
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
-import {PersonCard} from "./components/PersonCard/personCard";
-import {AllCards} from "./components/Home/AllCards";
-import {AddPerson} from "./components/PersonCard/CreateCard/addPerson";
+import {PersonCard} from "./components/PersonCard/personCard.tsx";
+import {AllCards} from "./components/Home/AllCards.tsx";
+import {AddPerson} from "./components/PersonCard/CreateCard/addPerson.tsx";
 
 function App() {
   return (
